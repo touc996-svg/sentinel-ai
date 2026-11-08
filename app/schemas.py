@@ -77,3 +77,23 @@ class SecurityEventRead(BaseModel):
     occurred_at: datetime
     ingested_at: datetime
     details: dict[str, Any]
+
+
+class IncidentRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: str
+    rule_id: str
+    title: str
+    description: str
+    severity: str
+    risk_score: int
+    status: str
+    source_ip: str | None
+    username: str | None
+    first_seen: datetime
+    last_seen: datetime
+    event_count: int
+    evidence_event_ids: list[str]
+    created_at: datetime
+    updated_at: datetime

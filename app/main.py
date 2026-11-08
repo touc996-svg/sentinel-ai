@@ -5,6 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.api.events import router as events_router
+from app.api.incidents import router as incidents_router
 from app.config import APP_NAME, APP_VERSION
 from app.database import get_db, init_db
 
@@ -27,6 +28,7 @@ def create_app(initialize_database: bool = True) -> FastAPI:
     )
 
     application.include_router(events_router)
+    application.include_router(incidents_router)
 
     @application.get("/")
     def root():
